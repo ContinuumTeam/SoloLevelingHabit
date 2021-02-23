@@ -1,28 +1,21 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  height: 100vh;
   width: 100vw;
+  height: 90vh;
+
+  max-width: 992px;
 
   display: flex;
-  justify-content: center;
-  align-items: center;
 
   flex-direction: column;
 
   section {
-    /* flex: 1; */
+    flex: 1;
 
     display: grid;
-    grid-template-rows: 1fr 1fr;
-  }
-
-  @media (min-width: 720px) {
-    section {
-      /* flex: 1; */
-
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
+    grid-template-columns: 1fr 1fr;
+    gap: 6.25rem;
+    align-content: center;
   }
 `

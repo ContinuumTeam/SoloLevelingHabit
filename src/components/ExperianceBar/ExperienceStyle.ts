@@ -5,7 +5,7 @@ export const Container = styled.div`
   align-items: center;
 
   max-width: 992px;
-  width: 100%;
+  width: 100vw;
   height: 80px;
 
   padding: 0 1.5rem;
