@@ -16,7 +16,7 @@ const Home: React.FC = () => {
     <ThemeProvider theme={light}>
       <Container>
         <Head>
-          <title>Create Next App</title>
+          <title>Moovit</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
 

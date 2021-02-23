@@ -7,7 +7,7 @@ export const Container = styled.div`
   font-weight: 600;
   color: ${porps => porps.theme.colors.title};
 
-  > div {
+  div {
     flex: 1;
     display: flex;
     align-items: center;
@@ -36,5 +36,30 @@ export const Container = styled.div`
   span {
     font-size: 6.25rem;
     margin: 0 0.5rem;
+  }
+`
+export const Button = styled.div`
+  .countdownButton {
+    width: 100%;
+    height: 5rem;
+
+    margin-top: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 0;
+    border-radius: 5px;
+
+    background: ${props => props.theme.colors.blue};
+    color: ${props => props.theme.colors.white};
+
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: 0.3s ease all;
+  }
+  .countdownButton:hover {
+    background: ${props => props.theme.colors.blueDark};
   }
 `
