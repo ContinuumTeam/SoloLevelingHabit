@@ -1,0 +1,12 @@
+import Header from '../components/Header/header'
+
+import light from '../styles/themes/light'
+import dark from '../styles/themes/dark'
+
+const [mode, setMode] = useState(light)
+
+const toggleTheme = () => {
+  setMode(mode.title === 'light' ? dark : light)
+}
+
+<Header toggleTheme={toggleTheme} />
