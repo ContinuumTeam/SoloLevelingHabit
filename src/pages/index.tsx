@@ -8,7 +8,6 @@ import Header from '../components/Header/header'
 import Landing from '../components/Landing/landing'
 import ExperinceBar from '../components/ExperianceBar/ExperinceBar'
 
-import GlobalStyles from '../styles/global'
 import { ThemeProvider } from 'styled-components'
 
 import light from '../styles/themes/light'
@@ -22,7 +21,6 @@ const Home: React.FC = () => {
 
   return (
     <ThemeProvider theme={mode}>
-      <GlobalStyles />
       <Container>
         <Head>
           <title>Create Next App</title>

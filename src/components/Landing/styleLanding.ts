@@ -9,7 +9,4 @@ export const Container = styled.div`
   align-items: center;
 
   flex-direction: column;
-
-  background: ${props => props.theme.colors.background};
-  color: ${props => props.theme.colors.text};
 `
