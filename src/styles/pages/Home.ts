@@ -11,19 +11,4 @@ export const Container = styled.div`
 
   background: ${props => props.theme.colors.background};
   color: ${props => props.theme.colors.text};
-
-  h1 {
-    font-size: 5rem;
-    font-family: 'Rajdhani', sans-serif;
-    color: ${props => props.theme.colors.primary};
-    margin-top: 2rem;
-  }
-  p {
-    font-size: 2rem;
-    line-height: 32px;
-    font-family: 'Rajdhani', sans-serif;
-  }
-  img {
-    width: 100%;
-  }
 `
