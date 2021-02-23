@@ -5,7 +5,7 @@ import Head from 'next/head'
 // import LoveLogo from '../assets/undraw_Appreciation_re_p6rl.svg'
 import { Container } from '../styles/pages/Home'
 
-import Landing from '../components/Landing/landing'
+import Landing from '../components/pages/Landing/landing'
 import ExperinceBar from '../components/ExperianceBar/ExperinceBar'
 
 import { ThemeProvider } from 'styled-components'

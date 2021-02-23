@@ -5,7 +5,10 @@ import { Container } from './styleLanding'
 const Landing: React.FC = () => {
   return (
     <Container>
-      <p>hello world</p>
+      <section>
+        <div></div>
+        <div></div>
+      </section>
     </Container>
   )
 }
