@@ -13,8 +13,6 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme }) => {
 
   return (
     <Container>
-      <p>hello world</p>
-
       <Swicth
         onChange={toggleTheme}
         checked={title === 'dark'}

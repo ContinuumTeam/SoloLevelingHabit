@@ -8,8 +8,5 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  padding: 0 30px;
-
-  background: ${props => props.theme.colors.primary};
-  color: ${props => props.theme.colors.white};
+  padding: 30px 15px 0;
 `
