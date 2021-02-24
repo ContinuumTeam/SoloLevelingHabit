@@ -49,7 +49,11 @@ const CountDown: React.FC = () => {
       </Container>
       <Button>
         {hasFinished ? (
-          <button disabled type="button" className="countdownButton">
+          <button
+            disabled
+            type="button"
+            className="countdownButton fineshedButton"
+          >
             Ciclo Encerrado
           </button>) : (
           <>
@@ -64,7 +68,7 @@ const CountDown: React.FC = () => {
             ) : (
               <button
                 type="button"
-                className="stopTheCountButton"
+                className="countdownButton stopTheCountButton"
                 onClick={stopTheCount}
               >
                 Abandonar ciclo X

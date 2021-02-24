@@ -59,31 +59,25 @@ export const Button = styled.div`
     font-weight: 600;
     transition: 0.3s ease all;
   }
-  .countdownButton:hover {
+  .countdownButton::not(::disabled):hover {
     background: ${props => props.theme.colors.blueDark};
   }
-  .stopTheCountButton {
-    width: 100%;
-    height: 5rem;
 
-    margin-top: 2rem;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border: 0;
-    border-radius: 5px;
-
+  .fineshedButton{
     background: ${props => props.theme.colors.white};
-    color: ${props => props.theme.colors.red};
+    color: ${props => props.theme.colors.title};
+    cursor: not-allowed;
 
-    font-size: 1.25rem;
-    font-weight: 600;
-    transition: 0.3s ease all;
+    border-bottom: 5px solid ${props => props.theme.colors.green};
   }
-  .stopTheCountButton:hover {
-    background: ${props => props.theme.colors.red};
-    color: ${props => props.theme.colors.white};
-  }
+
+  .stopTheCountButton {
+  background: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.red};
+
+}
+  .stopTheCountButton: hover {
+  background: ${props => props.theme.colors.red};
+  color: ${props => props.theme.colors.white};
+}
 `
