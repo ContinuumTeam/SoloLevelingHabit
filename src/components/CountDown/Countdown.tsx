@@ -5,8 +5,9 @@ import { Container, Button } from './CountDownStyle'
 let countdownTimeout: NodeJS.Timeout
 
 const CountDown: React.FC = () => {
-  const [time, setTime] = useState(25 * 60)
+  const [time, setTime] = useState(0.05 * 60)
   const [isActive, setIsActive] = useState(false)
+  const [hasFinished, setHasFinished] = useState(false)
 
   const minute = Math.floor(time / 60)
   const second = time % 60
@@ -20,13 +21,16 @@ const CountDown: React.FC = () => {
   function stopTheCount() {
     clearTimeout(countdownTimeout)
     setIsActive(false)
-    setTime(25 * 60)
+    setTime(0.05 * 60)
   }
   useEffect(() => {
     if (isActive && time > 0) {
       countdownTimeout = setTimeout(() => {
         setTime(time - 1)
       }, 1000)
+    } else if (isActive && time === 0) {
+      setHasFinished(true)
+      setIsActive(false)
     }
   }, [isActive, time])
 
@@ -44,26 +48,30 @@ const CountDown: React.FC = () => {
         </div>
       </Container>
       <Button>
-        <div className="">
-          {!isActive && (
-            <button
-              type="button"
-              className="countdownButton"
-              onClick={startCount}
-            >
-              iniciar um ciclo
-            </button>
-          )}
-          {isActive && (
-            <button
-              type="button"
-              className="stopTheCountButton"
-              onClick={stopTheCount}
-            >
-              Abandonar ciclo X
-            </button>
-          )}
-        </div>
+        {hasFinished ? (
+          <button disabled type="button" className="countdownButton">
+            Ciclo Encerrado
+          </button>) : (
+          <>
+            { !isActive ? (
+              <button
+                type="button"
+                className="countdownButton"
+                onClick={startCount}
+              >
+                iniciar um ciclo
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="stopTheCountButton"
+                onClick={stopTheCount}
+              >
+                Abandonar ciclo X
+              </button>
+            )}
+          </>
+        )}
       </Button>
     </div>
   )
