@@ -1,29 +1,29 @@
 // eslint-disable-next-line no-use-before-define
-import React from 'react'
+import React, {useContext} from 'react'
 import LevelImage from '../../../public/icons/level-up.svg'
 import BodyImage from '../../../public/icons/body.svg'
+import EyeImage from '../../../public/icons/eye.svg'
 
 import { Container } from './CardStyled'
+import { ChallengerContex } from '../../Contexts/ChallengerContex'
 
 const HomeCard: React.FC = () => {
 
-  const hasActiveChallenger = true;
+  const {activeChallenge} = useContext(ChallengerContex)
 
   return (
     <Container>
       <>
-      { hasActiveChallenger ? (
+      { activeChallenge ? (
         <div className="challengerActive">
 
-          <header> Ganhe 400 xp</header>
+          <header> Ganhe {activeChallenge.amount} xp</header>
 
           <main>
-            <BodyImage />
-            <strong>Exercite-se</strong>
+            {activeChallenge.type == 'body' ? <BodyImage /> : <EyeImage />}
+            <strong>Novo desafio</strong>
             <p>
-              É agora Diegão, bora lá meu parça.
-              Caminhe por 3 minutos e estique suas pernas
-              pra você ficar saudável.
+              {activeChallenge.description}
             </p>
           </main>
 

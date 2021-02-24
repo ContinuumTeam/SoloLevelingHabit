@@ -2,25 +2,33 @@ import { createContext, useContext, useState, ReactNode } from 'react'
 import challenger from '../../challenges.json'
 
 
-interface ChallengerContextProps{
-  level: number,
-  currentExperience: number,
-  ChallengersComplited: number,
-  levelUp: () => void,
-  startNewChallenger: () => void
+interface ChallengeProps{
+  type: 'body' | 'eye';
+  description: string;
+  amount: number;
 }
 
-interface ChallengerProps {
+interface ChallengerContextProps{
+  level: number;
+  currentExperience: number;
+  ChallengersComplited: number;
+  levelUp: () => void;
+  activeChallenge: ChallengeProps;
+  startNewChallenger: () => void;
+}
+
+interface ChallengerProviderProps {
   children: ReactNode;
 }
 
 export const ChallengerContex = createContext({} as ChallengerContextProps)
 
-export function ChallengerProvider({children}: ChallengerProps){
+export function ChallengerProvider({children}: ChallengerProviderProps){
 
    const [level, setLevel] = useState(1)
    const [currentExperience, setCurrentExperience] = useState(0)
    const [ChallengersComplited, setChallengersComplited] = useState(0)
+   const [activeChallenge, setActiveChallenge] = useState(null)
 
 
 
@@ -28,7 +36,14 @@ export function ChallengerProvider({children}: ChallengerProps){
      setLevel(level + 1)
    }
    function startNewChallenger(){
-     console.log('new challenger');
+
+    const randomChallengerIndex = Math.floor(Math.random() * challenger.length)
+    console.log(randomChallengerIndex);
+
+    const challenge = challenger[randomChallengerIndex]
+    console.log(challenge);
+
+    setActiveChallenge(challenge)
    }
 
    return(
@@ -38,6 +53,7 @@ export function ChallengerProvider({children}: ChallengerProps){
         levelUp,
         currentExperience,
         ChallengersComplited,
+        activeChallenge,
         startNewChallenger
       }
     }>
