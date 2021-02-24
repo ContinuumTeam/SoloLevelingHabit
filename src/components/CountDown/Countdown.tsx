@@ -1,10 +1,14 @@
-// eslint-disable-next-line no-use-before-define
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { ChallengerContex } from '../../Contexts/ChallengerContex'
 import { Container, Button } from './CountDownStyle'
 
 let countdownTimeout: NodeJS.Timeout
 
 const CountDown: React.FC = () => {
+
+  //#region ConstRegion
+  const {startNewChallenger} = useContext(ChallengerContex)
+
   const [time, setTime] = useState(0.05 * 60)
   const [isActive, setIsActive] = useState(false)
   const [hasFinished, setHasFinished] = useState(false)
@@ -14,6 +18,7 @@ const CountDown: React.FC = () => {
 
   const [minuteLeft, minuteRight] = String(minute).padStart(2, '0').split('')
   const [secondLeft, secondRight] = String(second).padStart(2, '0').split('')
+  //#endregion
 
   function startCount() {
     setIsActive(true)
@@ -25,12 +30,15 @@ const CountDown: React.FC = () => {
   }
   useEffect(() => {
     if (isActive && time > 0) {
+
       countdownTimeout = setTimeout(() => {
         setTime(time - 1)
       }, 1000)
+
     } else if (isActive && time === 0) {
       setHasFinished(true)
       setIsActive(false)
+      startNewChallenger()
     }
   }, [isActive, time])
 
