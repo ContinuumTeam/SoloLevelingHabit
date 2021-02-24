@@ -1,4 +1,6 @@
 import { createContext, useContext, useState, ReactNode } from 'react'
+import challenger from '../../challenges.json'
+
 
 interface ChallengerContextProps{
   level: number,
