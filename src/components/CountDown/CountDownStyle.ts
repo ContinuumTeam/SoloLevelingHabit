@@ -62,4 +62,28 @@ export const Button = styled.div`
   .countdownButton:hover {
     background: ${props => props.theme.colors.blueDark};
   }
+  .stopTheCountButton {
+    width: 100%;
+    height: 5rem;
+
+    margin-top: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 0;
+    border-radius: 5px;
+
+    background: ${props => props.theme.colors.white};
+    color: ${props => props.theme.colors.red};
+
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: 0.3s ease all;
+  }
+  .stopTheCountButton:hover {
+    background: ${props => props.theme.colors.red};
+    color: ${props => props.theme.colors.white};
+  }
 `

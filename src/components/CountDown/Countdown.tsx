@@ -2,9 +2,11 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Button } from './CountDownStyle'
 
+let countdownTimeout: NodeJS.Timeout
+
 const CountDown: React.FC = () => {
   const [time, setTime] = useState(25 * 60)
-  const [active, setActive] = useState(false)
+  const [isActive, setIsActive] = useState(false)
 
   const minute = Math.floor(time / 60)
   const second = time % 60
@@ -13,15 +15,20 @@ const CountDown: React.FC = () => {
   const [secondLeft, secondRight] = String(second).padStart(2, '0').split('')
 
   function startCount() {
-    setActive(true)
+    setIsActive(true)
+  }
+  function stopTheCount() {
+    clearTimeout(countdownTimeout)
+    setIsActive(false)
+    setTime(25 * 60)
   }
   useEffect(() => {
-    if (active && time > 0) {
-      setTimeout(() => {
+    if (isActive && time > 0) {
+      countdownTimeout = setTimeout(() => {
         setTime(time - 1)
       }, 1000)
     }
-  }, [active, time])
+  }, [isActive, time])
 
   return (
     <div>
@@ -37,9 +44,26 @@ const CountDown: React.FC = () => {
         </div>
       </Container>
       <Button>
-        <button type="button" className="countdownButton" onClick={startCount}>
-          iniciar um ciclo
-        </button>
+        <div className="">
+          {!isActive && (
+            <button
+              type="button"
+              className="countdownButton"
+              onClick={startCount}
+            >
+              iniciar um ciclo
+            </button>
+          )}
+          {isActive && (
+            <button
+              type="button"
+              className="stopTheCountButton"
+              onClick={stopTheCount}
+            >
+              Abandonar ciclo X
+            </button>
+          )}
+        </div>
       </Button>
     </div>
   )

@@ -5,6 +5,7 @@ import { Container } from './styleLanding'
 import Profile from '../../Profile/Profile'
 import CompletedChallenger from '../../CompletedChallengers/CompletedChallengers'
 import CountDown from '../../CountDown/Countdown'
+import HomeCard from '../../HomeCard/HomeCard'
 
 const Landing: React.FC = () => {
   return (
@@ -15,7 +16,9 @@ const Landing: React.FC = () => {
           <CompletedChallenger />
           <CountDown />
         </div>
-        <div></div>
+        <div>
+          <HomeCard />
+        </div>
       </section>
     </Container>
   )
