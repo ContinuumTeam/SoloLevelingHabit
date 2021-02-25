@@ -6,20 +6,23 @@ import Profile from '../../Profile/Profile'
 import CompletedChallenger from '../../CompletedChallengers/CompletedChallengers'
 import CountDown from '../../CountDown/Countdown'
 import HomeCard from '../../HomeCard/HomeCard'
+import { CountDownProvider } from '../../../Contexts/CountDownContext'
 
 const Landing: React.FC = () => {
   return (
     <Container>
-      <section>
-        <div>
-          <Profile />
-          <CompletedChallenger />
-          <CountDown />
-        </div>
-        <div>
-          <HomeCard />
-        </div>
-      </section>
+      <CountDownProvider>
+        <section>
+          <div>
+            <Profile />
+            <CompletedChallenger />
+            <CountDown />
+          </div>
+          <div>
+            <HomeCard />
+          </div>
+        </section>
+      </CountDownProvider>
     </Container>
   )
 }

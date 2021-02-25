@@ -9,7 +9,7 @@ import { ChallengerContex } from '../../Contexts/ChallengerContex'
 
 const HomeCard: React.FC = () => {
 
-  const {activeChallenge, resetChallenger} = useContext(ChallengerContex)
+  const {activeChallenge, resetChallenger, completeChallenger} = useContext(ChallengerContex)
 
   return (
     <Container>
@@ -39,6 +39,7 @@ const HomeCard: React.FC = () => {
             <button
               type="button"
               className="complitedChallengerButton"
+              onClick={completeChallenger}
             >
               Completei
             </button>

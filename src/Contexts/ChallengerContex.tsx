@@ -17,6 +17,7 @@ interface ChallengerContextProps{
   levelUp: () => void;
   startNewChallenger: () => void;
   resetChallenger: () => void;
+  completeChallenger: () => void
 }
 
 interface ChallengerProviderProps {
@@ -37,14 +38,41 @@ export function ChallengerProvider({children}: ChallengerProviderProps){
   //#endregion
 
   //#region Functions
+
+    //funcao para uppar o level
    function levelUp(){
      setLevel(level + 1)
    }
 
+    //funcao para resetar o desfio
    function resetChallenger(){
      setActiveChallenge(null)
    }
 
+   //funcao para incrementar level
+   function completeChallenger(){
+     if(!activeChallenge){
+       return;
+     }
+
+     const {amount} = activeChallenge
+
+     let finalExperience = currentExperience + amount
+
+     if(finalExperience >= experienceToNextLevel){
+       finalExperience = finalExperience - experienceToNextLevel
+
+       levelUp()
+     }
+
+     setCurrentExperience(finalExperience)
+     setActiveChallenge(null)
+     setChallengersComplited(ChallengersComplited + 1)
+
+   }
+
+
+  //funcao para inciar um novo desafio
    function startNewChallenger(){
 
 
@@ -69,6 +97,7 @@ export function ChallengerProvider({children}: ChallengerProviderProps){
         activeChallenge,
         startNewChallenger,
         resetChallenger,
+        completeChallenger
       }
     }>
       {children}
