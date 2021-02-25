@@ -6,10 +6,21 @@ import EyeImage from '../../../public/icons/eye.svg'
 
 import { Container } from './CardStyled'
 import { ChallengerContex } from '../../Contexts/ChallengerContex'
+import { CountDownContext } from '../../Contexts/CountDownContext'
 
 const HomeCard: React.FC = () => {
 
   const {activeChallenge, resetChallenger, completeChallenger} = useContext(ChallengerContex)
+  const {stopTheCount} = useContext(CountDownContext)
+  function handleSucessChallenger(){
+    completeChallenger(),
+    stopTheCount()
+  }
+
+  function handleFailedChallenger(){
+    resetChallenger()
+    stopTheCount()
+  }
 
   return (
     <Container>
@@ -31,7 +42,7 @@ const HomeCard: React.FC = () => {
             <button
               type="button"
               className="failedChallengerButton"
-              onClick={resetChallenger}
+              onClick={handleFailedChallenger}
             >
             Falhei
             </button>
@@ -39,7 +50,7 @@ const HomeCard: React.FC = () => {
             <button
               type="button"
               className="complitedChallengerButton"
-              onClick={completeChallenger}
+              onClick={handleSucessChallenger}
             >
               Completei
             </button>
