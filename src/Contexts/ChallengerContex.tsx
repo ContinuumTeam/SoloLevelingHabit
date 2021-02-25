@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from 'react'
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react'
 import challenger from '../../challenges.json'
 
 
@@ -38,6 +38,10 @@ export function ChallengerProvider({children}: ChallengerProviderProps){
   //#endregion
 
   //#region Functions
+
+  useEffect(() => {
+    Notification.requestPermission()
+  }, [])
 
     //funcao para uppar o level
    function levelUp(){
@@ -83,6 +87,12 @@ export function ChallengerProvider({children}: ChallengerProviderProps){
     console.log(challenge);
 
     setActiveChallenge(challenge)
+
+    new Audio('/public/notification.mp3').play()
+
+    if(Notification.permission === 'granted'){
+      new Notification('Novo desafio', {body: `Valendo ${challenge.amount}xp`})
+    }
    }
    //#endregion
 
