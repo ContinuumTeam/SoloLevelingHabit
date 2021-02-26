@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react'
 import challenger from '../../challenges.json'
+import Cookies from 'js-cookie'
 
 interface ChallengeProps{
   type: 'body' | 'eye';
@@ -41,6 +42,10 @@ export function ChallengerProvider({children}: ChallengerProviderProps){
   useEffect(() => {
     Notification.requestPermission()
   }, [])
+
+  useEffect(() => {
+
+  }, [level, currentExperience, ChallengersComplited])
 
     //funcao para uppar o level
    function levelUp(){
