@@ -11,4 +11,8 @@ export const Container = styled.div`
 
   background: ${props => props.theme.colors.background};
   color: ${props => props.theme.colors.text};
+
+  @media(max-width: 740px){
+    height: 100%;
+  }
 `

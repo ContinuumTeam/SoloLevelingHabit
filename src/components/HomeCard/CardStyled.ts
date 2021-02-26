@@ -121,7 +121,7 @@ export const Container = styled.div`
 
       button{
 
-        width: 174px;
+        width: 10rem;
         height: 50px;
         border: 0;
         border-radius: 5px;
@@ -149,5 +149,8 @@ export const Container = styled.div`
         background: ${props => props.theme.colors.green};
       }
     }
+  }
+  @media(max-width: 740px){
+    height: 95%;
   }
 `

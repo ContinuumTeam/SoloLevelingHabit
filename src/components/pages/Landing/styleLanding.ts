@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 90vh;
+  width: 80%;
+  height: 100%;
 
   max-width: 992px;
 
@@ -17,5 +17,16 @@ export const Container = styled.div`
     grid-template-columns: 1fr 1fr;
     gap: 6.25rem;
     align-content: center;
+  }
+
+  @media(max-width: 740px){
+
+    section{
+
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
   }
 `

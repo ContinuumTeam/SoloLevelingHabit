@@ -1,7 +1,6 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react'
 import challenger from '../../challenges.json'
 
-
 interface ChallengeProps{
   type: 'body' | 'eye';
   description: string;
@@ -88,10 +87,10 @@ export function ChallengerProvider({children}: ChallengerProviderProps){
 
     setActiveChallenge(challenge)
 
-    new Audio('/public/notification.mp3').play()
 
     if(Notification.permission === 'granted'){
       new Notification('Novo desafio', {body: `Valendo ${challenge.amount}xp`})
+      new Audio("../../public/notification.mp3")
     }
    }
    //#endregion
