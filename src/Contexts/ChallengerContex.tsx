@@ -33,7 +33,7 @@ export function ChallengerProvider({ children, ...rest }: ChallengerProviderProp
 
   //#region const
   const [level, setLevel] = useState(rest.level ?? 1)
-  const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ??)
+  const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ?? 0)
   const [challengersCompleted, setChallengersCompleted] = useState(rest.challengersCompleted ?? 1)
   const [activeChallenge, setActiveChallenge] = useState(null)
 
