@@ -16,14 +16,14 @@ interface CountDownProviderProps {
   children: ReactNode;
 }
 
-export const CountDownContext = createContext({} as CountDownContexData )
+export const CountDownContext = createContext({} as CountDownContexData)
 
-export function CountDownProvider({children}: CountDownProviderProps){
+export function CountDownProvider({ children }: CountDownProviderProps) {
 
   //#region Estados e Consts
-  const {startNewChallenger} = useContext(ChallengerContex)
+  const { startNewChallenger } = useContext(ChallengerContex)
 
-  const [time, setTime] = useState(0.05 * 60)
+  const [time, setTime] = useState(25 * 60)
   const [isActive, setIsActive] = useState(false)
   const [hasFinished, setHasFinished] = useState(false)
 
@@ -40,7 +40,7 @@ export function CountDownProvider({children}: CountDownProviderProps){
     clearTimeout(countdownTimeout)
     setIsActive(false)
     setHasFinished(false)
-    setTime(0.05 * 60)
+    setTime(25 * 60)
   }
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export function CountDownProvider({children}: CountDownProviderProps){
   }, [isActive, time])
 
   //#endregion
-  return(
+  return (
     <CountDownContext.Provider value={{
       minute,
       second,
