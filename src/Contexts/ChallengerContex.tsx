@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react'
 import challenger from '../../challenges.json'
 import Cookies from 'js-cookie'
+import LevelUpModal from '../components/LevelUpModal/LevelUpModal'
 
 interface ChallengeProps {
   type: 'body' | 'eye';
@@ -17,7 +18,8 @@ interface ChallengerContextProps {
   levelUp: () => void;
   startNewChallenger: () => void;
   resetChallenger: () => void;
-  completeChallenger: () => void
+  completeChallenger: () => void;
+  closeLevelUpModal: () => void;
 }
 
 interface ChallengerProviderProps {
@@ -36,6 +38,7 @@ export function ChallengerProvider({ children, ...rest }: ChallengerProviderProp
   const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ?? 0)
   const [challengersCompleted, setChallengersCompleted] = useState(rest.challengersCompleted ?? 1)
   const [activeChallenge, setActiveChallenge] = useState(null)
+  const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false)
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
   //#endregion
@@ -55,6 +58,11 @@ export function ChallengerProvider({ children, ...rest }: ChallengerProviderProp
   //funcao para uppar o level
   function levelUp() {
     setLevel(level + 1)
+    setIsLevelUpModalOpen(true)
+  }
+
+  function closeLevelUpModal() {
+    setIsLevelUpModalOpen(false)
   }
 
   //funcao para resetar o desfio
@@ -83,7 +91,6 @@ export function ChallengerProvider({ children, ...rest }: ChallengerProviderProp
     setChallengersCompleted(challengersCompleted + 1)
 
   }
-
 
   //funcao para inciar um novo desafio
   function startNewChallenger() {
@@ -116,10 +123,12 @@ export function ChallengerProvider({ children, ...rest }: ChallengerProviderProp
         activeChallenge,
         startNewChallenger,
         resetChallenger,
-        completeChallenger
+        completeChallenger,
+        closeLevelUpModal
       }
     }>
       {children}
+      { isLevelUpModalOpen && <LevelUpModal />}
     </ChallengerContex.Provider>
   )
 }
